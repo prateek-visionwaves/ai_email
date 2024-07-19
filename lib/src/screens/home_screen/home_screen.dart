@@ -3,6 +3,7 @@ import 'package:ai_email/src/core/blocs/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:triton_extensions/triton_extensions.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -46,7 +47,19 @@ class HomeScreen extends StatelessWidget {
           title: const Text('MyIT'),
           actions: [
             IconButton(onPressed: (){
-              context.read<AuthenticationBloc>().add(LogOut());
+              showDialog(context: context, builder: (context)=> AlertDialog(
+                title: const Text('Logout Ai-Email?'),
+                content: const Text('Are you sure want to logout of app?'),
+                actions: [
+                  OutlinedButton(onPressed: (){
+                    Navigator.pop(context);
+                  }, child: const Text('Cancel')),
+                  FilledButton(onPressed: (){
+                    context.read<AuthenticationBloc>().add(LogOut());
+                    Navigator.pop(context);
+                  }, child: const Text('Yes, Logout')),
+                ],
+              ));
             }, icon: const Icon(Icons.exit_to_app))
           ],
         ),

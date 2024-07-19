@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:ai_email/src/core/api_service/api_service.dart';
 import 'package:ai_email/src/core/blocs/auth_bloc.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Center(
                 child: Text(
-              'MyIt',
+              'Ai-Email',
               style: context.textTheme.titleLarge!
                   .copyWith(fontWeight: FontWeight.bold),
             )),
@@ -111,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             });
                           }
                         },
-                        child: const Text('Login')):const CircularProgressIndicator()
+                        child: const Text('Submit')):const CircularProgressIndicator()
                   ],
                 ))
           ],

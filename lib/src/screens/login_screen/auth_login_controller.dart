@@ -1,4 +1,5 @@
 import 'package:ai_email/src/core/blocs/auth_bloc.dart';
+import 'package:ai_email/src/core/permissions/permission_manager.dart';
 import 'package:ai_email/src/screens/home_screen/home_screen.dart';
 import 'package:ai_email/src/screens/login_screen/login_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,6 +10,7 @@ class AuthLoginController extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    PermissionManager().requestMicrophonePermission();
     context.read<AuthenticationBloc>().add(LoadUserDetails());
     return BlocBuilder<AuthenticationBloc, AuthenticationState>(builder: (context, state){
       if(state.status == AuthenticationStatus.authenticated){
